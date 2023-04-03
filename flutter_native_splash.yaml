@@ -1,0 +1,21 @@
+flutter_native_splash:
+  color: "#424242"
+  image: assets/spothole_logo_512.png
+  #branding: assets/branding-development.png
+  color_dark: "#424242"
+  image_dark: assets/spothole_logo_512.png
+  #branding_dark: assets/branding-development.png
+  #android_gravity: clip_horizontal
+
+
+
+  android_12:
+    image: assets/spothole_logo_512.png
+    icon_background_color: "#424242"
+    image_dark: assets/spothole_logo_512.png
+    icon_background_color_dark: "#424242"
+
+  web: false
+  android: true
+  ios: false
+  fullscreen: true
