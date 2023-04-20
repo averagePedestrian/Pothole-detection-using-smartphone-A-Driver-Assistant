@@ -49,6 +49,7 @@ dependencies:
   notification_permissions: ^0.6.1
   location: ^4.2.0
   http: any
+  flutter_ringtone_player: ^3.2.0
 
   
 

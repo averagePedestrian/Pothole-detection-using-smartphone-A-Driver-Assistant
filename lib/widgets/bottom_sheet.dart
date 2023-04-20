@@ -80,7 +80,7 @@ class BottomSheetWidget extends StatelessWidget {
                     ),
                     Divider(),
                     Text(
-                      'Pre-Processing Time: $preProcessingTime ms',
+                      'Pre-Processing Time: ${preProcessingTime.toStringAsPrecision(3)} ms',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(fontSize: 13),
@@ -89,7 +89,7 @@ class BottomSheetWidget extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 4),
                       child: Text(
-                        'Inference Time: $inferenceTime ms',
+                        'Inference Time: ${inferenceTime.toStringAsPrecision(3)} ms',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 13),
@@ -104,7 +104,7 @@ class BottomSheetWidget extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 0),
                           child: Container(
                               child: Text(
-                            'Height: $height',
+                            'Height: ${height.toStringAsPrecision(3)}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontSize: 13),
@@ -115,7 +115,7 @@ class BottomSheetWidget extends StatelessWidget {
                           padding: EdgeInsets.only(left: 5),
                           child: Container(
                               child: Text(
-                            'Width: $width',
+                            'Width: ${width.toStringAsPrecision(3)}',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontSize: 13),
@@ -128,7 +128,7 @@ class BottomSheetWidget extends StatelessWidget {
                       padding: EdgeInsets.only(top: 4),
                       child: Container(
                           child: Text(
-                        'Depth: $depth',
+                        'Depth: ${depth.toStringAsPrecision(3)}',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(fontSize: 13),

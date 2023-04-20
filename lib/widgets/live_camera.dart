@@ -14,6 +14,7 @@ import 'bottom_sheet.dart';
 import 'bounding_box.dart';
 import 'camera.dart';
 import 'dart:convert';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:http/http.dart' as http;
 
 class LiveFeed extends StatefulWidget {
@@ -206,6 +207,31 @@ class _LiveFeedState extends State<LiveFeed> with WidgetsBindingObserver {
                   100; //((2 * 3.14 * 180) / (width + height * 360) * 1) * 2.54
               print("Body: $body");
               postRequest(body);
+
+              if (width * height >= 5500) {
+                Timer _timer;
+                FlutterRingtonePlayer.play(
+                    fromAsset: "assets/alert.mp3", looping: true, volume: 1);
+                // FlutterRingtonePlayer.play(
+                //   android: AndroidSounds.notification,
+                //   looping: true,
+                //   volume: 1,
+                //   asAlarm: true,
+                // );
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialog(
+                        //backgroundColor: Colors.red,
+                        title: const Text('Alert'),
+                        content: const Text('DANGER AHEAD'),
+                      );
+                    });
+                _timer = Timer(Duration(seconds: 3), () {
+                  FlutterRingtonePlayer.stop();
+                  Navigator.of(context).pop();
+                });
+              }
             } else {
               print("Longitude and latitude are null");
             }
@@ -465,7 +491,7 @@ class _LiveFeedState extends State<LiveFeed> with WidgetsBindingObserver {
                           padding: EdgeInsets.only(bottom: 8, right: 8, top: 8),
                           child: Container(
                               child: Text(
-                            'Pre-Processing Time: $preProcessingTime',
+                            'Pre-Processing Time: ${preProcessingTime.toStringAsPrecision(3)}',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontSize: 16),
@@ -476,7 +502,7 @@ class _LiveFeedState extends State<LiveFeed> with WidgetsBindingObserver {
                           padding: EdgeInsets.only(bottom: 8, right: 8, top: 8),
                           child: Container(
                               child: Text(
-                            'Inference Time: $inferenceTime',
+                            'Inference Time: ${inferenceTime.toStringAsPrecision(3)}',
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontSize: 16),
